@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Music Collection</string>
+    <string name="default_search_term">Michael jackson</string>
+    <string name="argument_music">music</string>
 </resources>

@@ -1,6 +1,10 @@
 package com.ep.musiccollection.model
 
-data class Result(
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Music(
     val artistId: Int,
     val artistName: String,
     val artistViewUrl: String,
@@ -35,4 +39,4 @@ data class Result(
     val trackTimeMillis: Int,
     val trackViewUrl: String,
     val wrapperType: String
-)
+):Parcelable

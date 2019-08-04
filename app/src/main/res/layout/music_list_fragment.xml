@@ -8,6 +8,8 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingStart="@dimen/layout_padding"
+            android:paddingEnd="@dimen/layout_padding"
             tools:context=".ui.musicList.MusicListFragment">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:adapter="@{adapter}"
+                tools:listitem="@layout/item_music_list"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     </FrameLayout>

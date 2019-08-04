@@ -2,4 +2,11 @@
     <string name="app_name">Music Collection</string>
     <string name="default_search_term">Michael jackson</string>
     <string name="argument_music">music</string>
+    <string name="track_image">Track Image</string>
+    <string name="track_other_details">Other Details</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="release_date">Release Date</string>
+    <string name="primary_genre">Primary Genre Name</string>
+    <string name="disk">Disk</string>
+    <string name="track">Track</string>
 </resources>

@@ -1,19 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="music" type="com.ep.musiccollection.model.Music"/>
     </data>
-    <FrameLayout
+    <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="@dimen/layout_padding"
             tools:context=".ui.musicDetail.MusicDetailFragment">
-
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@{music.trackName}"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </FrameLayout>
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_music_main_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.CardView"
+                    android:layout_margin="@dimen/layout_margin"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/card_music_other_info"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/layout_padding"
+                        android:orientation="vertical">
+                    <ImageView
+                            android:layout_width="@dimen/detail_image_size"
+                            android:layout_height="@dimen/detail_image_size"
+                            setCircularMusicImage="@{music}"
+                            android:contentDescription="@string/track_image"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@android:color/black"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:layout_marginTop="@dimen/layout_margin"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:text="@{music.trackName}"/>
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/element_margin_small"
+                            android:gravity="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:text="@{music.artistName}"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_music_other_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.MaterialComponents.CardView"
+                    android:layout_margin="@dimen/layout_margin"
+                    app:layout_constraintTop_toBottomOf="@+id/card_music_main_info"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/layout_padding"
+                        android:orientation="vertical">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/collection_name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{music.collectionName}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@android:color/black"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_height"
+                            android:layout_marginTop="@dimen/divider_margin"
+                            android:layout_marginBottom="@dimen/divider_margin"
+                            android:background="@color/divider_background"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/release_date"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            setReleaseDate="@{music.releaseDate}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@android:color/black"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_height"
+                            android:layout_marginTop="@dimen/divider_margin"
+                            android:layout_marginBottom="@dimen/divider_margin"
+                            android:background="@color/divider_background"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/primary_genre"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{music.primaryGenreName}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@android:color/black"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_height"
+                            android:layout_marginTop="@dimen/divider_margin"
+                            android:layout_marginBottom="@dimen/divider_margin"
+                            android:background="@color/divider_background"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/disk"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:text='@{music.discNumber + " of " + music.discCount}'
+                            android:textColor="@android:color/black"/>
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_height"
+                            android:layout_marginTop="@dimen/divider_margin"
+                            android:layout_marginBottom="@dimen/divider_margin"
+                            android:background="@color/divider_background"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/track"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:text='@{music.trackNumber + " of " + music.trackCount}'
+                            android:textColor="@android:color/black"/>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>

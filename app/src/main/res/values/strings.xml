@@ -9,4 +9,6 @@
     <string name="primary_genre">Primary Genre Name</string>
     <string name="disk">Disk</string>
     <string name="track">Track</string>
+    <string name="btn_retry">Retry</string>
+    <string name="msg_no_data">No data found !</string>
 </resources>

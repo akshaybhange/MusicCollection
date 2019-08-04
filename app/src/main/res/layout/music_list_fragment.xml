@@ -2,6 +2,8 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="adapter" type="com.ep.musiccollection.ui.musicList.MusicListAdapter"/>
+        <variable name="resource" type="com.ep.musiccollection.data.Resource"/>
+        <variable name="retryCallback" type="com.ep.musiccollection.util.RetryCallback"/>
     </data>
     <FrameLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,6 +14,12 @@
             android:paddingEnd="@dimen/layout_padding"
             tools:context=".ui.musicList.MusicListFragment">
 
+        <ProgressBar
+                android:id="@+id/progress_music_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"/>
+
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_music_list"
                 android:layout_width="match_parent"
@@ -19,6 +27,22 @@
                 app:adapter="@{adapter}"
                 tools:listitem="@layout/item_music_list"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        <LinearLayout
+                android:id="@+id/layout_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+            <TextView
+                    android:id="@+id/text_error_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_retry"
+                    android:onClick="@{() -> retryCallback.retry()}"/>
+        </LinearLayout>
 
     </FrameLayout>
 </layout>

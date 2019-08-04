@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="card_horizontal_spacing">8dp</dimen>
+    <dimen name="card_vertical_spacing">8dp</dimen>
     <dimen name="layout_margin">8dp</dimen>
     <dimen name="layout_padding">8dp</dimen>
     <dimen name="card_corner_radius">16dp</dimen>

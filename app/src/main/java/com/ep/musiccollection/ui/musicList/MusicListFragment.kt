@@ -26,10 +26,14 @@ class MusicListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.music_list_fragment, container, false)
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.adapter = adapter
-        return binding.root
+        return if (::binding.isInitialized) {
+            binding.root
+        } else {
+            binding = DataBindingUtil.inflate(inflater, R.layout.music_list_fragment, container, false)
+            binding.lifecycleOwner = viewLifecycleOwner
+            binding.adapter = adapter
+            binding.root
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -14,7 +14,7 @@ object BindingAdapters {
     @BindingAdapter("setMusicImage")
     fun setMusicImage(imageView: ImageView, music: Music) {
         Glide.with(imageView)
-            .load(music.artworkUrl100)
+            .load(music.artworkUrl60)
             .thumbnail(
                 Glide.with(imageView)
                     .load(music.artworkUrl30)

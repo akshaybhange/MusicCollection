@@ -1,13 +1,13 @@
 package com.ep.musiccollection.util
 
-import android.view.View
+import android.annotation.SuppressLint
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.ep.musiccollection.data.Resource
+import com.ep.musiccollection.R
 import com.ep.musiccollection.model.Music
+import com.google.android.material.button.MaterialButton
 
 object BindingAdapters {
     @JvmStatic
@@ -50,13 +50,21 @@ object BindingAdapters {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @JvmStatic
-    @BindingAdapter("setProgressVisibility")
-    fun setProgressVisibility(view: ProgressBar, resource: Resource<Any>) {
-        view.visibility = when (resource) {
-            is Resource.Loading -> View.VISIBLE
-            else -> View.GONE
-        }
+    @BindingAdapter("setTrackLength")
+    fun setTrackLength(view: TextView, millis: Int) {
+        val minutes = millis / 1000 / 60
+        val seconds = millis / 1000 % 60
+        view.text = "$minutes:$seconds"
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    @JvmStatic
+    @BindingAdapter("setTrackPrice")
+    fun setTrackPrice(view: MaterialButton, music: Music) {
+        view.text = view.context.getString(R.string.setTrackPrice, music.trackPrice, music.currency)
     }
 
 }

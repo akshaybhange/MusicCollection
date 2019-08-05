@@ -4,11 +4,14 @@
     <string name="argument_music">music</string>
     <string name="track_image">Track Image</string>
     <string name="track_other_details">Other Details</string>
-    <string name="collection_name">Collection Name</string>
-    <string name="release_date">Release Date</string>
-    <string name="primary_genre">Primary Genre Name</string>
-    <string name="disk">Disk</string>
-    <string name="track">Track</string>
+    <string name="info_collection_name">Collection Name</string>
+    <string name="info_release_date">Release Date</string>
+    <string name="info_primary_genre">Primary Genre Name</string>
+    <string name="info_disk">Disk</string>
+    <string name="info_track">Track</string>
+    <string name="info_track_length">Track Length</string>
     <string name="btn_retry">Retry</string>
     <string name="msg_no_data">No data found !</string>
+    <string name="setTrackPrice">Buy Track : %1$.2f %2$s</string>
+    <string name="msgBoughtTrack">Success! Track Bought for %1$.2f %2$s</string>
 </resources>

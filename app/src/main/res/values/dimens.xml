@@ -11,4 +11,5 @@
     <dimen name="element_margin_small">4dp</dimen>
     <dimen name="divider_margin">6dp</dimen>
     <dimen name="divider_height">1dp</dimen>
+    <dimen name="btn_corner_radius">50dp</dimen>
 </resources>

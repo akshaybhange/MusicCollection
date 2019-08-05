@@ -2,7 +2,6 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="adapter" type="com.ep.musiccollection.ui.musicList.MusicListAdapter"/>
-        <variable name="resource" type="com.ep.musiccollection.data.Resource"/>
         <variable name="retryCallback" type="com.ep.musiccollection.util.RetryCallback"/>
     </data>
     <FrameLayout
@@ -38,6 +37,8 @@
             <com.google.android.material.button.MaterialButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="@dimen/layout_padding"
                     android:text="@string/btn_retry"
                     android:onClick="@{() -> retryCallback.retry()}"/>
         </LinearLayout>

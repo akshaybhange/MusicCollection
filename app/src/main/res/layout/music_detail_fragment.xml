@@ -2,6 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="music" type="com.ep.musiccollection.model.Music"/>
+        <variable name="viewModel" type="com.ep.musiccollection.ui.musicDetail.MusicDetailViewModel"/>
     </data>
     <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -57,6 +58,7 @@
                             android:layout_marginTop="@dimen/element_margin_small"
                             android:gravity="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:onClick="@{() -> viewModel.onClickOpenWebPage(music.artistViewUrl)}"
                             android:text="@{music.artistName}"/>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -73,7 +75,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/card_music_main_info"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_buy_track"
                     app:cardCornerRadius="@dimen/card_corner_radius"
                     app:cardElevation="@dimen/card_elevation">
 
@@ -86,7 +88,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/collection_name"
+                            android:text="@string/info_collection_name"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
                     <TextView
@@ -94,19 +96,15 @@
                             android:layout_height="wrap_content"
                             android:text="@{music.collectionName}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:onClick="@{() -> viewModel.onClickOpenWebPage(music.collectionViewUrl)}"
                             android:textColor="@android:color/black"/>
 
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/divider_height"
-                            android:layout_marginTop="@dimen/divider_margin"
-                            android:layout_marginBottom="@dimen/divider_margin"
-                            android:background="@color/divider_background"/>
+                    <View style="@style/dividerTheme"/>
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/release_date"
+                            android:text="@string/info_release_date"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
                     <TextView
@@ -116,17 +114,27 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@android:color/black"/>
 
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/divider_height"
-                            android:layout_marginTop="@dimen/divider_margin"
-                            android:layout_marginBottom="@dimen/divider_margin"
-                            android:background="@color/divider_background"/>
+                    <View style="@style/dividerTheme"/>
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/primary_genre"
+                            android:text="@string/info_track_length"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            setTrackLength="@{music.trackTimeMillis}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@android:color/black"/>
+
+                    <View style="@style/dividerTheme"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/info_primary_genre"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
                     <TextView
@@ -136,17 +144,12 @@
                             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                             android:textColor="@android:color/black"/>
 
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/divider_height"
-                            android:layout_marginTop="@dimen/divider_margin"
-                            android:layout_marginBottom="@dimen/divider_margin"
-                            android:background="@color/divider_background"/>
+                    <View style="@style/dividerTheme"/>
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/disk"
+                            android:text="@string/info_disk"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
                     <TextView
@@ -156,17 +159,12 @@
                             android:text='@{music.discNumber + " of " + music.discCount}'
                             android:textColor="@android:color/black"/>
 
-                    <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/divider_height"
-                            android:layout_marginTop="@dimen/divider_margin"
-                            android:layout_marginBottom="@dimen/divider_margin"
-                            android:background="@color/divider_background"/>
+                    <View style="@style/dividerTheme"/>
 
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/track"
+                            android:text="@string/info_track"
                             android:textAppearance="@style/TextAppearance.AppCompat.Small"/>
 
                     <TextView
@@ -178,6 +176,22 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_buy_track"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/card_horizontal_spacing"
+                    android:layout_marginEnd="@dimen/card_horizontal_spacing"
+                    android:layout_marginTop="@dimen/card_vertical_spacing"
+                    android:layout_marginBottom="@dimen/card_vertical_spacing"
+                    app:layout_constraintTop_toBottomOf="@+id/card_music_other_info"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:cornerRadius="@dimen/btn_corner_radius"
+                    android:onClick="@{() -> viewModel.onClickBuyButton(music)}"
+                    setTrackPrice="@{music}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -85,5 +85,10 @@ class MusicListFragment : Fragment() {
             if (view.id == binding.rvMusicList.id) VISIBLE else GONE
         binding.layoutError.visibility =
             if (view.id == binding.layoutError.id) VISIBLE else GONE
+
+        if (view.id == binding.progressMusicList.id)
+            binding.progressMusicList.startShimmerAnimation()
+        else
+            binding.progressMusicList.stopShimmerAnimation()
     }
 }

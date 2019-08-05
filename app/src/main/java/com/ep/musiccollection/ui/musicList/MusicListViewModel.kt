@@ -20,7 +20,6 @@ class MusicListViewModel : ViewModel() {
         return musicListData
     }
 
-
     fun getMusicList(searchTerm: String) {
         musicListData
             .addSource(repository.getMusicList(searchTerm)) { musicListData.value = it }
